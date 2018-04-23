@@ -1,0 +1,11 @@
+.right__message.clearfix{data: {id: message.id}}
+  .right__message-name
+    = message.user.name
+  .right__message-time
+    %p ２月８日(*日付表示のメソッドが動かないから)
+    /= format_posted_time(message.created_at)
+  .right__message-body
+    -if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image, class: 'right__body-message-image' if message.image.present?

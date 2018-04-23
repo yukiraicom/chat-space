@@ -1,0 +1,26 @@
+.left
+  = render 'devise/shared/side_bar'
+
+.right
+  .right__header
+    .right__header--group.clearfix
+      .right__header--group-name
+        =@group.name
+      = link_to "Edit", edit_group_path(@group), class: "right__header--group-edit-btn"
+    .right__header-members
+      member:
+      - @group.users.each do |member|
+        %li.member
+          = member.name
+  .right__body
+    = render @messages
+    / collectionはidを含めないパス
+
+  .right__footer
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'right__footer-form', placeholder: 'type a message'
+      .right__footer__image
+        = f.label :image, class: 'image' do
+          %i.far.fa-image
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'submit'
