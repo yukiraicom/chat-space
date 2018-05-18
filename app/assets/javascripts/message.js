@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function buildHTML(message){
 var html = `              <div class='right__message clearfix' data-id="${message.id}">
                             <div class='right__message-name'>
