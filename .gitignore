@@ -18,3 +18,4 @@
 
 #mysql
 /confog/database.yml
+/config/secrets.yml
