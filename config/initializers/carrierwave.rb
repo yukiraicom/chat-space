@@ -12,7 +12,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'upload-test-yuki'
-  config.asset_host = 'https://s3-ap-southeast-1'
-AKIAI653CZXJEY7YFZWAconfig/secrets.yml
-aded-test-yuki
+  config.asset_host = 'https://s3-ap-southeast-1.amazonaws.com/upload-test-yuki'
 end
