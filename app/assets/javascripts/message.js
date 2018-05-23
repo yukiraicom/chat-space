@@ -11,6 +11,7 @@ var html = `              <div class='right__message clearfix' data-id="${messag
                               <p class='lower-message__content'>
                               ${message.content}
                               </p>
+                              ${ message.image == null ? "" : `<p class='right__body-message-image'><img src="${message.image}"></p>`}
 
                             </div>
                             </div>`
