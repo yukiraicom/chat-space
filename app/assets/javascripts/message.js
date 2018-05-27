@@ -11,10 +11,18 @@ var html = `              <div class='right__message clearfix' data-id="${messag
                               <p class='lower-message__content'>
                               ${message.content}
                               </p>
-                              ${ message.image == null ? "" : `<p class='right__body-message-image'><img src="${message.image}"></p>`}
 
-                            </div>
-                            </div>`
+
+
+
+                            `
+    if(message.image != null){
+        var image = `<p class='right__body-message-image'><img src="${message.image}"></p>`;
+        html += image;
+        console.log(image)
+        console.log("nulldayo")
+    }
+    html += `</div></div>`;
   return html;
   }
 
@@ -56,7 +64,7 @@ var html = `              <div class='right__message clearfix' data-id="${messag
     $.ajax({
       type: "POST",
       url: url,
-      data: formData,//formdataもpatramsを見るとハッシュになっているから？？よくわからない。
+      data: formData,//formdataもpatramsを見るとハッシュになっているから？？
       dataType: "json",
       processData: false,
       contentType: false //contentTypeはサーバーに送るデータ形式を決める。デフォルトであるxmlに上書きされるのを防ぐ。
@@ -64,6 +72,7 @@ var html = `              <div class='right__message clearfix' data-id="${messag
     /*jsonについて、json.nameのnameはkeyでそのあとの@message.user.nameが値となっている。 */
 
     .done(function(data) {
+      console.log("done");
       var html = buildHTML(data);
       $('.right__body').append(html) //appendでhtmlを追加する。
       //appendの指定場所について、ulのliを追加したい場合は$('ul').append(~~~);とする。
