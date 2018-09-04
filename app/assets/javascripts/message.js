@@ -41,6 +41,7 @@ var html = `              <div class='right__message clearfix' data-id="${messag
     })
     .done(function(messages){
       console.log("自動更新完了");
+      console.log(messages.length);
       if (messages.length !==0 ) {
         messages.forEach(function(message) {
           var html = buildHTML(message);
@@ -53,7 +54,6 @@ var html = `              <div class='right__message clearfix' data-id="${messag
       alert("メッセージの取得に失敗")
     })
   }
-
   $(".new_message").on("submit", function(e){
     e.preventDefault();
     var formData = new FormData(this); /*formdataはフォームのデータの送信に使える。
@@ -76,8 +76,14 @@ var html = `              <div class='right__message clearfix' data-id="${messag
       var html = buildHTML(data);
       $('.right__body').append(html) //appendでhtmlを追加する。
       //appendの指定場所について、ulのliを追加したい場合は$('ul').append(~~~);とする。
-      $('.right__footer-form').val('') /*入力したメッセージを消す。 valは要素を取得したり変更したりすることができる。
+      
+      $('.right__footer-form').val('') 
+      /*入力したメッセージを消す。 valは要素を取得したり変更したりすることができる。
       今回の場合は入力フォームの中身をからにしている。*/
+
+      $('.hidden').val('');
+      
+      //$('.right__footer-form')[0].reset()
       $(".submit").prop('disabled', false)/*propは指定した属性に値をセットする。
       今回の場合はdisable属性をtrueからfalseに変えた。*/
       $('.right__body').animate({scrollTop: $('.right__body')[0].scrollHeight},'swing')//swinghs動きかたの違い

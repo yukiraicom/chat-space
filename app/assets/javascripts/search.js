@@ -47,9 +47,10 @@ $(function() {
     })
   });
   $("#user-search-result").on("click", ".user-search-add", function(){
+    console.log($(this));
     var user_id = $(this).data("user-id");
     var user_name = $(this).data("user-name");
-    $(this).parent().remove();
+    $(this).parent().remove(); /*thisはボタン */
     addUser(user_id, user_name);
   })
   $("#chat-group-users").on("click", ".user-search-remove ", function(){
